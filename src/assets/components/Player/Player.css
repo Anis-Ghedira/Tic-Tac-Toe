@@ -1,0 +1,99 @@
+#players {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: 2px solid var(--border);
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+#players li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  width: 90%;
+  justify-content: center;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  flex-wrap: wrap;
+}
+
+#players .identification {
+  gap: 0.3rem;
+  flex-wrap: nowrap;
+}
+
+#players button {
+  width: 4rem;
+  border: none;
+  background: none;
+  color: var(--blue);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+  text-align: center;
+}
+
+#players button:hover {
+  color: rgba(241, 70, 164, 0.98);
+  font-size: 1.1rem;
+}
+
+#players .lottie {
+  width: 100px;
+}
+
+#players li .player-name {
+  width: 6rem;
+  font-family: "Caprasimo", cursive;
+  font-size: 1.1rem;
+  color: var(--title);
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+  text-align: end;
+}
+
+#players li input {
+  color: var(--subtitle);
+  font-size: 1rem;
+  width: 8rem;
+  border: none;
+  padding: 0.5rem;
+  animation: pulse-text 2s infinite;
+  background-color: var(--bg-header);
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+
+#players li .player-symbol {
+  font-size: 1.3rem;
+  color: var(--subtitle);
+  font-family: "Caprasimo", cursive;
+  font-weight: 600;
+}
+
+@keyframes pulse-text {
+  0% {
+    color: #e1dec7;
+  }
+  50% {
+    color: #9f9d83;
+  }
+  100% {
+    color: #e1dec7;
+  }
+}
+
+@media (max-width: 1100px) {
+  #players li {
+    gap: 0rem;
+  }
+}
