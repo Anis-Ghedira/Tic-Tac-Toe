@@ -1,25 +1,7 @@
 import { useState } from "react";
 import "./Board.css";
 
-const initialBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-export default function Board() {
-  const [board, setBoard] = useState(initialBoard);
-  const [symbol, setSymbol] = useState(null);
-
-  function handleBoard(rowIndex, colIndex) {
-    setBoard((prevboard) => {
-      const updatedBoard = [...prevboard.map((innerArray) => [...innerArray])];
-      updatedBoard[rowIndex][colIndex] = symbol;
-      return updatedBoard;
-    });
-
-    setSymbol(() => (symbol === "X" ? "O" : "X"));
-  }
-
+export default function Board({ onSelect, board }) {
   return (
     <ol id="game-board">
       {board.map((row, rowIndex) => (
@@ -29,7 +11,7 @@ export default function Board() {
               <li key={colIndex}>
                 <button
                   disabled={playerSymbol}
-                  onClick={() => handleBoard(rowIndex, colIndex)}
+                  onClick={() => onSelect(rowIndex, colIndex)}
                 >
                   {playerSymbol}
                 </button>

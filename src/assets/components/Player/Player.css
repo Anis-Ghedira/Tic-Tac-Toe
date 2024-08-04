@@ -15,8 +15,9 @@
   align-items: baseline;
   gap: 1rem;
   width: 90%;
+  padding-right: 1rem;
   justify-content: center;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 15px;
   flex-wrap: wrap;
 }
@@ -80,6 +81,16 @@
   font-weight: 600;
 }
 
+#players li.active {
+  border-color: rgba(70, 235, 241, 0.98);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#players li.active .player-name,
+#players li.active .player-symbol {
+  color: rgba(70, 235, 241, 0.98);
+}
+
 @keyframes pulse-text {
   0% {
     color: #e1dec7;
@@ -89,6 +100,21 @@
   }
   100% {
     color: #e1dec7;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    border-color: rgba(70, 235, 241, 0.98);
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
+  }
+  50% {
+    border-color: rgba(70, 235, 241, 0.98);
+    box-shadow: 0 0 0 0.5rem rgba(248, 165, 49, 0);
+  }
+  100% {
+    border-color: rgba(70, 235, 241, 0.98);
+    box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
   }
 }
 

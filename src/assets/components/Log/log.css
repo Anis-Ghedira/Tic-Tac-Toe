@@ -1,0 +1,35 @@
+#log {
+  width: 100%;
+  color: var(--title);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-self: self-start;
+  font-family: "Caprasimo", cursive;
+  font-size: 1.5rem;
+}
+
+#log li {
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  animation: slide-in-from-left 1s forwards;
+  margin: 0.75rem;
+}
+
+#log li.highlighted {
+  background-color: #3f3b00;
+  color: white;
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

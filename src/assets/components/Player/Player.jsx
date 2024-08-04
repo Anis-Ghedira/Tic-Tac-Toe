@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Player.css";
 
-export default function Player({ name, symbol }) {
+export default function Player({ name, symbol, isActive }) {
   const [isEdit, setIsEdit] = useState(false);
   const [playerName, setPlayerName] = useState(name);
 
@@ -13,7 +13,7 @@ export default function Player({ name, symbol }) {
     setIsEdit(() => !isEdit);
   }
   return (
-    <li>
+    <li className={isActive ? "active" : null}>
       <div className="identification flex">
         {isEdit ? (
           <input type="text" value={playerName} onChange={handlePlayerName} />
@@ -23,15 +23,6 @@ export default function Player({ name, symbol }) {
         <p className="player-symbol">{symbol}</p>
       </div>
       <button onClick={handleEdit}>{isEdit ? "Save" : "Edit"}</button>
-      {/* <span className="player">
-        {isEdit ? (
-           />
-        ) : (
-          <span ç>{playerName}</span>
-        )}
-        <span className="player-symbol">{symbol}</span>
-      </span>
-       */}
     </li>
   );
 }
