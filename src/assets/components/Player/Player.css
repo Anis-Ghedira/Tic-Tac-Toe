@@ -48,7 +48,7 @@
 }
 
 #players li .player-name {
-  width: 6rem;
+  width: 8rem;
   font-family: "Caprasimo", cursive;
   font-size: 1.1rem;
   color: var(--title);
@@ -95,5 +95,11 @@
 @media (max-width: 1100px) {
   #players li {
     gap: 0rem;
+  }
+}
+
+@media (max-width: 700px) {
+  #players .lottie {
+    margin-left: 2rem;
   }
 }
