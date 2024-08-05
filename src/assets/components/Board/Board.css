@@ -30,9 +30,16 @@
   padding: 1rem;
   transition: all 0.5s;
 }
+.light #game-board button {
+  color: white;
+}
 
 #game-board button:hover {
   border: 2px solid rgba(70, 235, 241, 0.98);
+}
+
+.light #game-board button:hover {
+  border: 2px solid var(--border);
 }
 
 @media (max-width: 600px) {

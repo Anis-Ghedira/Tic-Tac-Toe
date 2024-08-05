@@ -40,8 +40,13 @@
 }
 
 #players button:hover {
-  color: rgba(241, 70, 164, 0.98);
-  font-size: 1.1rem;
+  color: rgba(70, 235, 241, 0.98);
+  font-size: 1.2rem;
+}
+
+.light #players button:hover {
+  color: rgba(255, 255, 255, 0.98);
+  transition: 0.5s;
 }
 
 #players .lottie {
@@ -71,7 +76,29 @@
   background-color: var(--bg-header);
   text-align: center;
   text-transform: uppercase;
-  border-radius: 15px;
+}
+
+.light #players li input {
+  color: var(--subtitle);
+  animation: pulse-text1 2s infinite;
+  background-color: rgba(255, 255, 255, 0.236);
+}
+
+.light #players li .player-symbol {
+  font-size: 1.3rem;
+  color: var(--subtitle);
+  font-family: "Caprasimo", cursive;
+  font-weight: 600;
+}
+
+.light #players li.active {
+  border-color: var(--title);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.light #players li.active .player-name,
+.light #players li.active .player-symbol {
+  color: white;
 }
 
 #players li .player-symbol {
@@ -102,18 +129,29 @@
     color: #e1dec7;
   }
 }
+@keyframes pulse-text1 {
+  0% {
+    color: #434343;
+  }
+  50% {
+    color: #8f8f8f;
+  }
+  100% {
+    color: #434343;
+  }
+}
 
 @keyframes pulse {
   0% {
-    border-color: rgba(70, 235, 241, 0.98);
+    border-color: white;
     box-shadow: 0 0 0 0 rgba(246, 227, 90, 0.4);
   }
   50% {
-    border-color: rgba(70, 235, 241, 0.98);
+    border-color: white;
     box-shadow: 0 0 0 0.5rem rgba(248, 165, 49, 0);
   }
   100% {
-    border-color: rgba(70, 235, 241, 0.98);
+    border-color: white;
     box-shadow: 0 0 0 0 rgba(246, 227, 90, 0);
   }
 }

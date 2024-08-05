@@ -15,12 +15,19 @@
   animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
 }
 
+.light #game-over {
+  background-color: var(--bg-board);
+}
+
 #game-over h2 {
   font-family: "Caprasimo", cursive;
   font-size: 4rem;
   text-align: center;
   color: rgba(70, 235, 241, 0.98);
   margin: 0;
+}
+.light #game-over h2 {
+  color: white;
 }
 
 #game-over p {
@@ -29,6 +36,10 @@
   color: var(--title);
   text-transform: capitalize;
   font-weight: 700;
+}
+
+.light #game-over p {
+  color: white;
 }
 
 #game-over button {
@@ -50,4 +61,22 @@
   color: var(--title);
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(70, 235, 241, 0.98);
+}
+
+.light #game-over button:hover {
+  background: rgba(0, 0, 0, 0.98);
+  color: white;
+  box-shadow: 0 0 20px white;
+  border: 2px solid white;
+}
+
+.light #game-over button {
+  border: 2px solid black;
+  color: var(--title);
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s, color 0.2s;
+  box-shadow: 0 0 8px rgba(255, 187, 0, 0.4);
 }

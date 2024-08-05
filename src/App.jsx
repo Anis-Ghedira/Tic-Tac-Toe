@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Player from "./assets/components/Player/Player";
 import Board from "./assets/components/Board/Board";
 import Lottie from "lottie-react";
@@ -21,7 +21,27 @@ function App() {
     X: "player 1",
     O: "Player 2",
   });
+  const [theme, setTheme] = useState(
+    localStorage.getItem("currentmood") ?? "dark"
+  );
+  useEffect(() => {
+    if (theme === "light") {
+      document.body.classList.remove("light");
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+      document.body.classList.add("light");
+    }
+  }, [theme]);
 
+  function clickHandler() {
+    // send value to localStorage
+    localStorage.setItem("currentmood", theme === "dark" ? "light" : "dark");
+
+    // get value from localStorage
+
+    setTheme(localStorage.getItem("currentmood"));
+  }
   function handlePlayerName(a, b) {
     setPlayerName((prev) => {
       const name = { ...prev };
@@ -76,7 +96,10 @@ function App() {
       <div className="title flex">
         <div />
         <h1>TIC-TAC-TOE</h1>
-        <button className="icon-moon-o" />
+        <button
+          onClick={clickHandler}
+          className={theme === "dark" ? "icon-sun" : "icon-moon-o"}
+        />
       </div>
 
       <div className="box flex">
