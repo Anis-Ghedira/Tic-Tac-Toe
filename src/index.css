@@ -103,7 +103,7 @@ ol {
   justify-content: center;
   align-items: center;
   font-size: 1.6rem;
-  margin-right: 5rem;
+  margin-right: 10rem;
 }
 
 .container .icon-moon-o:hover {
@@ -148,9 +148,7 @@ ol {
 .container .box .log {
   border: 2px solid var(--border);
   flex-grow: 1;
-  /* padding: 1rem 1.5rem; */
   border-radius: 15px;
-  /* align-self: flex-start; */
 }
 
 /* ====================================
@@ -175,5 +173,8 @@ ol {
 @media (max-width: 700px) {
   .container {
     width: 100%;
+  }
+  .container .icon-moon-o {
+    margin-right: 5rem;
   }
 }

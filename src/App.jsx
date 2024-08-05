@@ -17,6 +17,18 @@ function App() {
   const [activePlayer, setActivePlayer] = useState("X");
   const [board, setBoard] = useState(initialBoard);
   const [turns, setTurns] = useState([]);
+  const [playerName, setPlayerName] = useState({
+    X: "player 1",
+    O: "Player 2",
+  });
+
+  function handlePlayerName(a, b) {
+    setPlayerName((prev) => {
+      const name = { ...prev };
+      name[a] = b;
+      return name;
+    });
+  }
 
   function handleRematch() {
     setBoard(initialBoard);
@@ -72,25 +84,31 @@ function App() {
           <ol id="players">
             <Player
               isActive={activePlayer === "X"}
-              name="Player 1"
+              name={playerName.X}
               symbol="X"
+              onChange={handlePlayerName}
             />
             <Lottie className="lottie" animationData={animation} />
             <Player
               isActive={activePlayer === "O"}
-              name="Player 2"
+              name={playerName.O}
               symbol="O"
+              onChange={handlePlayerName}
             />
           </ol>
           {winner || draw ? (
-            <GameOver winner={winner} onSelect={handleRematch} />
+            <GameOver
+              playerName={playerName}
+              winner={winner}
+              onSelect={handleRematch}
+            />
           ) : null}
           <div className="board">
             <Board onSelect={handleBoard} board={board} />
           </div>
         </div>
         <div className="log">
-          <Log turns={turns} />
+          <Log turns={turns} playerName={playerName} />
         </div>
       </div>
     </div>

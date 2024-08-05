@@ -1,24 +1,25 @@
 import { useState } from "react";
 import "./Player.css";
 
-export default function Player({ name, symbol, isActive }) {
+export default function Player({ name, symbol, isActive, onChange }) {
   const [isEdit, setIsEdit] = useState(false);
-  const [playerName, setPlayerName] = useState(name);
+  const [player, setPlayer] = useState(name);
 
-  function handlePlayerName(e) {
-    setPlayerName(e.target.value);
+  function handlePlayer(e) {
+    setPlayer(e.target.value);
   }
 
   function handleEdit() {
     setIsEdit(() => !isEdit);
+    onChange(symbol, player);
   }
   return (
     <li className={isActive ? "active" : null}>
       <div className="identification flex">
         {isEdit ? (
-          <input type="text" value={playerName} onChange={handlePlayerName} />
+          <input type="text" value={player} onChange={handlePlayer} />
         ) : (
-          <p className="player-name">{playerName}</p>
+          <p className="player-name">{name}</p>
         )}
         <p className="player-symbol">{symbol}</p>
       </div>
