@@ -4,16 +4,24 @@ import Board from "./assets/components/Board/Board";
 import Lottie from "lottie-react";
 import animation from "../public/Animation - 1722779653872.json";
 import Log from "./assets/components/Log/Log";
+import GameOver from "./assets/components/GameOver/GameOver";
+import { WinningCombinations } from "./assets/components/win";
 
 const initialBoard = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
 ];
+
 function App() {
   const [activePlayer, setActivePlayer] = useState("X");
   const [board, setBoard] = useState(initialBoard);
   const [turns, setTurns] = useState([]);
+
+  function handleRematch() {
+    setBoard(initialBoard);
+    setTurns([]);
+  }
 
   function handleBoard(rowIndex, colIndex) {
     setBoard((prevboard) => {
@@ -28,11 +36,29 @@ function App() {
         { row: rowIndex, col: colIndex, player: activePlayer },
         ...prevturn,
       ];
-      console.log(updatedTurn);
       return updatedTurn;
     });
   }
 
+  let winner;
+  for (const combination of WinningCombinations) {
+    const firstSquare = board[combination[0].row][combination[0].column];
+    const secondSquare = board[combination[1].row][combination[1].column];
+    const thirdSquare = board[combination[2].row][combination[2].column];
+
+    if (
+      firstSquare &&
+      firstSquare === secondSquare &&
+      secondSquare === thirdSquare
+    ) {
+      winner = firstSquare;
+    }
+  }
+
+  let draw = false;
+  if (!winner && turns.length > 8) {
+    draw = true;
+  }
   return (
     <div className="container">
       <div className="title flex">
@@ -56,6 +82,9 @@ function App() {
               symbol="O"
             />
           </ol>
+          {winner || draw ? (
+            <GameOver winner={winner} onSelect={handleRematch} />
+          ) : null}
           <div className="board">
             <Board onSelect={handleBoard} board={board} />
           </div>
